@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>ysproject</display-name>
+  <welcome-file-list>
+    <welcome-file>main.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Controller</display-name>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>controller.Controller</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/cont</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SuccessView</display-name>
+    <servlet-name>SuccessView</servlet-name>
+    <servlet-class>view.SuccessView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuccessView</servlet-name>
+    <url-pattern>/succ</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FailView</display-name>
+    <servlet-name>FailView</servlet-name>
+    <servlet-class>view.FailView</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FailView</servlet-name>
+    <url-pattern>/fail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>sendMessage</display-name>
+    <servlet-name>sendMessage</servlet-name>
+    <servlet-class>message.sendMessage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sendMessage</servlet-name>
+    <url-pattern>/send</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<title>main.html</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body, h1, h5 {
+	font-family: "Raleway", sans-serif
+}
+
+body, html {
+	height: 100%
+}
+
+#video {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	min-width: 100%;
+	min-height: 50%;
+	width: auto;
+	height: auto;
+	z-index: -1;
+	overflow: hidden;
+}
+
+.bgimg {
+	min-height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+</style>
+<body>
+	<video id="video" preload="auto" autoplay="true" loop="loop"muted="muted" volume="0">
+		<source src="images/loststars.mp4">
+	</video>
+<div class="bgimg w3-display-container w3-text-white" style="text-align:left">
+  <div class="w3-display-left w3-jumbo" style="text-align:left" id="star">
+  	<img onclick='myStar("star")' src="images/star.png" alt="YSmusic" height=30% width=30%>
+    <p style="text-align:left">With, <br> <span class="hello-h3-span">YSmusic&nbsp;&nbsp;</span></p>
+  </div>
+  <div class="w3-display-bottomleft w3-container">
+    <p class="w3-xxlarge">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The echo through YSmusic</p><br>
+  </div>  
+   	<div class="w3-display-topright w3-container w3-large"><br><a onclick="document.getElementById('join').style.display='block'" >회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+	<a onclick="document.getElementById('login').style.display='block'">로그인</a>&nbsp;&nbsp;&nbsp;
+   	</div>
+</div>
+
+
+<!-- Join Modal -->
+<div id="join" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+  	<form  action="cont" method="post">
+  	<input type="hidden" name="command" value="insert">
+    <div class="w3-container w3-black w3-display-container">
+      <span onclick="document.getElementById('join').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>사용하고자 하는 아이디</h1>
+    </div>
+    <div class="w3-container">
+      <input type="text" placeholder="ID" name="id" required><p></p>
+    </div>
+    <div class="w3-container w3-black">
+      <h1>사용하고자 하는 비밀번호</h1>
+    </div>
+    <div class="w3-container">
+      <input type="password" placeholder="PASSWORD" name="pw" required><p></p>
+    </div>
+    <div class="w3-container w3-black">
+      <h1>회원의 이름</h1>
+    </div>
+    <div class="w3-container">
+      <input type="text" placeholder="NAME" name="name" required><p></p>
+    </div>
+    <div class="w3-container w3-black">
+      <h1>회원의 성별</h1>
+    </div>
+    <div class="w3-container" data-toggle="buttons">
+      <input type="radio" name="gender" autocomplete ="off" value="male" checked> 남자 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 	  <input type="radio" name="gender" autocomplete ="off" value="female"> 여자<br><p></p>
+    </div>
+    <div class="w3-container w3-black">
+      <h1>회원의 생년월일</h1>
+    </div>
+    <div class="w3-container">
+      <input type="text" placeholder="yymmdd" name="birthday" required><p></p>
+    </div>
+    <div>
+	  <input type="checkbox" id="agreeInfo" name="agreeInfo" value="agreeInfo"  required> <label for="agreeInfo">개인정보제공 동의</label>
+	</div>
+	 <div class "clearfix">
+    &nbsp;&nbsp;&nbsp;<button type="button" onclick="document.getElementById('join').style.display='none'" class="w3-button w3-gray">취소</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="submit" class="w3-button w3-yellow" onclick="alertSucc();">가입</button>
+    </div>
+    </form>
+  </div>
+</div>
+<!-- Contact Modal -->
+<div id="login" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black">
+      <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>로그인</h1>
+    </div>
+    <div class="w3-container">
+      <form action="cont" method="post">
+      	<input type="hidden" name="command" value="login">
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="ID" name="loginid" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="PASSWORD" name="loginpw" required ></p>
+        <p><button class="w3-button w3-yellow" type="submit">로그인</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+	function myStar(v) {
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("star").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "cont?command=" + v, true);
+		xhttp.send();
+	}
+
+	function mylogin(v) {
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("loginView").style.display='none';
+			}
+		};
+		xhttp.open("GET", "cont?command=" + v, true);
+		xhttp.send();
+
+	}
+	
+</script>
+</body>
+</html>
+

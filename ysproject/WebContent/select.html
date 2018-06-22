@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<title>select.html</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/w32.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<script src="js/audio.min.js"></script>
+
+<script>
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+</script>
+
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('images/backgroud.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge" id="star">
+    <img onclick='myStar("star")' src="images/star.png" alt="YSmusic" height=30% width=30%>
+  </div>
+  <div class="w3-display-top2">
+  	<br><br>
+    <h1 class="w3-jumbo w3-animate-top"><center>Search Songs</center></h1>
+    <p class="w3-large w3-center">
+    	<input type="radio" name="select" id="select" value="bysong" checked> 노래별 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<input type="radio" name="select" id="select" value="byartist"> 아티스트별&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	<input type="radio" name="select" id="select" value="bygenre"> 장르별<br>
+    	<input type="text" name="search" id="text" onkeyup="searchSong()" size=30>
+      	<img onclick='searchSong()' src="images/searchbutton.png"  alt="YSmusic" height=3% width=3%>
+    </p>
+    <hr class="w3-border-grey" style="margin:auto;width:100%">
+  </div>
+  	<br>
+    <p class="w3-large w3-center w3-text-black" id="searchbox"></p>
+</div>
+
+<script type="text/javascript">
+	function myStar(v) {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("star").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "cont?command=" + v, true);
+		xhttp.send();
+	}
+	 
+	  
+	function searchSong() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("searchbox").innerHTML = this.responseText;
+			}
+		};
+		
+		var selectVal = document.getElementsByName("select");
+		var commandid =["bysong", "byartist", "bygenre"];
+		for(i=0;i<selectVal.length;i++){
+			if(selectVal[i].checked == true){
+				xhttp.open("GET", "cont?command="+commandid[i]+"&text="+document.getElementById("text").value, true);
+				xhttp.send();
+			}
+		}
+		
+	}
+	window.onload = function(){
+		searchSong();
+	}
+</script>
+</body>
+</html>

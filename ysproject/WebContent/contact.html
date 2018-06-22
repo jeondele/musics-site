@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>contact.html</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+<link rel="stylesheet" href="css/w32.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+</head>
+
+
+
+
+
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('images/score.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+#map {
+        height: 400px;
+        width: 100%;
+       }
+
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge" id="star">
+    <img onclick='myStar("star")' src="images/star.png" alt="YSmusic" height=30% width=30%>
+  </div>
+  <div class="w3-display-top2"><br><br>
+    <h1 class="w3-jumbo w3-animate-top"><center>Contact</center></h1>
+    
+   <font size=4> <Center>Good music made by good people and we deliver the music that vividly and truly touches our hearts.</font></Center><br>
+    	<Center>좋은 사람들이 모여 만든 좋은 음악, 우리의 마음에 또렷하게 울리는 선명한 음악 하나, 음악의 진심을 당신에게 전합니다.</Center><br><hr><br>
+    <Center><i class="fa fa-map-marker fa-2x" style="width:30px"></i> 122-1, Jeoksun-dong, Jongro-gu, Seoul, Korea &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-phone fa-2x" style="width:30px"></i> 02-1234-5678 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-envelope fa-2x" style="width:30px"> </i> &nbsp;&nbsp; kpckpc@gmail.com</Center><br><br>
+ </div>
+  
+  
+ <div class="w3-display-middle2" style="margin:auto;width:70%"> 
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 37.574902, lng: 126.973133};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-9rxZCt_hf_CL0lC7ylpFyW2VL1GuK5o&callback=initMap">
+    </script>  
+ </div>
+  
+  
+  <div class="w3-display-bottomright w3-padding-large">
+    Back to <a href="main.html" target="_blank">Home</a>
+  </div>
+
+<script type="text/javascript">
+   function myStar(v) {
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("star").innerHTML = this.responseText;
+         }
+      };
+      xhttp.open("GET", "cont?command=" + v, true);
+      xhttp.send();
+   }
+</script>
+
+
+
+<!-- Send Message -->
+	<div class="w3-display-bottom2 w3-padding-large width:50%">
+	 <p><br><br><center>Lets get in touch. Send me a message:</center></p>
+  	 <form action="send" method="post" >
+      <p><center><input class="w3-input w3-border" type="text" placeholder="Name"  name="name" required ></center></p>
+      <p><center><input class="w3-input w3-border" type="text" placeholder="Email" name="email" required></center></p>
+      <p><center><input class="w3-input w3-border" type="text" placeholder="Message" name="message" required ></center></p>
+      <p>
+        <center><button class="w3-button w3-black w3-padding-large" type="submit">
+         <i class="fa fa-paper-plane"></i> &nbsp;SEND MESSAGE
+        </button></center>
+      </p>
+    </form>
+    </div>
+    
+</div>
+	
+</body>
+</html>
